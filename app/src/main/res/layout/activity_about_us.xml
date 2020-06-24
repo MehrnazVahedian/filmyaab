@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/videoblocks_black_and_glowing_blue"
+    tools:context=".about_us">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="87dp"
+        android:layout_height="26dp"
+        android:fontFamily="serif"
+        android:shadowColor="#18FFFF"
+        android:text="version 1.1"
+        android:textAlignment="center"
+        android:textColor="#2A40C4FF"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="218dp"
+        tools:layout_editor_absoluteY="183dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="181dp"
+        android:layout_height="61dp"
+        android:fontFamily="serif"
+        android:shadowColor="#18FFFF"
+        android:text="Film Yab"
+        android:textAlignment="center"
+        android:textColor="#18FFFF"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="173dp"
+        tools:layout_editor_absoluteY="133dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="176dp"
+        android:layout_height="187dp"
+        android:fontFamily="serif"
+        android:shadowColor="#18FFFF"
+        android:text="Mehrnaz Vahedian      Mina Sayari"
+        android:textAlignment="center"
+        android:textColor="#18FFFF"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="173dp"
+        tools:layout_editor_absoluteY="482dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="260dp"
+        android:layout_height="252dp"
+        android:background="@drawable/img"
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="115dp"
+        android:layout_height="23dp"
+        android:fontFamily="serif"
+        android:shadowColor="#18FFFF"
+        android:text="2019_2020 vs pro"
+        android:textAlignment="center"
+        android:textColor="#2A40C4FF"
+        android:textSize="10sp"
+        tools:layout_editor_absoluteX="208dp"
+        tools:layout_editor_absoluteY="423dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
