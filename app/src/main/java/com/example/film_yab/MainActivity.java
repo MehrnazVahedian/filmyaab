@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 public class MainActivity extends AppCompatActivity {
+    public static String base_url= "https://api.themoviedb.org";
  ListView mylistview;
  String[] movies;
     @Override
