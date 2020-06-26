@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/videoblocks_black_and_glowing_blue"
     tools:context=".about_us">
 
     <TextView
@@ -50,7 +49,6 @@
         android:id="@+id/imageView"
         android:layout_width="260dp"
         android:layout_height="252dp"
-        android:background="@drawable/img"
         tools:layout_editor_absoluteX="126dp"
         tools:layout_editor_absoluteY="194dp" />
 
