@@ -56,7 +56,7 @@ public class MovieRecyclerViewAdapter extends  RecyclerView.Adapter<MovieRecycle
 
         public void itemBind(int position){
             title.setText(mData.get(position).getTitle());
-            Picasso.get().load("https://image.tmdb.org/t/p/w500"+mData.get(position).getImage()).into(image);
+            Picasso.get().load("https://image.tmdb.org/t/p/w500"+mData.get(position).getImage()).fit().into(image);
         }
         @Override
         public void onClick(View view) {
