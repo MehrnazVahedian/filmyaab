@@ -16,36 +16,36 @@ import java.util.List;
 public class MovieRecyclerViewAdapter extends  RecyclerView.Adapter<MovieRecyclerViewAdapter.ViewHolder>{
     private List<MovieModel> mData;
     private LayoutInflater mInflater;
-    //private ItemClickListener mClickListener;
+    private ItemClickListener mClickListener;
 
-    // data is passed into the constructor
-    MovieRecyclerViewAdapter(Context context, List<MovieModel> data) {
+
+    MovieRecyclerViewAdapter(Context context, List<MovieModel> data, ItemClickListener itemClickListener) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
+        this.mClickListener = itemClickListener;
     }
 
-    // inflates the row layout from xml when needed
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.movie_item_view, parent, false);
         return new ViewHolder(view);
     }
 
-    // binds the data to the TextView in each row
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.itemBind(position);
     }
 
-    // total number of rows
+
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
 
-    // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView title;
         private ImageView image;
         ViewHolder(View itemView) {
@@ -54,28 +54,19 @@ public class MovieRecyclerViewAdapter extends  RecyclerView.Adapter<MovieRecycle
             image = itemView.findViewById(R.id.movieItemViewImageView);
         }
 
-        public void itemBind(int position){
-            title.setText(mData.get(position).getTitle());
+        void itemBind(final int position){
+            //title.setText(mData.get(position).getTitle());
             Picasso.get().load("https://image.tmdb.org/t/p/w500"+mData.get(position).getImage()).fit().into(image);
-        }
-        @Override
-        public void onClick(View view) {
-           // if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View v) {
+                    mClickListener.onItemClick(mData.get(position).getId());
+                }
+            });
         }
     }
 
-    // convenience method for getting data at click position
-//    String getItem(int id) {
-//        return mData.get(id);
-//    }
-
-    // allows clicks events to be caught
-//    void setClickListener(ItemClickListener itemClickListener) {
-//        this.mClickListener = itemClickListener;
-//    }
-
-    // parent activity will implement this method to respond to click events
-//    public interface ItemClickListener {
-//        void onItemClick(View view, int position);
-//    }
+    public interface ItemClickListener {
+        void onItemClick(int movieId);
+    }
 }

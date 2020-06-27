@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
     TextView toolbarTitle;
     ImageButton toolbarAboutUsButton;
     RecyclerView movieRecyclerView;
+    ProgressBar loading;
     List<MovieModel> movies = new ArrayList<MovieModel>();
+    MovieRecyclerViewAdapter movieAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         toolbarAboutUsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-
+                Intent intent = new Intent(MainActivity.this,about_us.class);
+                startActivity(intent);
             }
         });
 
@@ -59,11 +64,23 @@ public class MainActivity extends AppCompatActivity {
     private void initialization(){
         toolbarTitle = findViewById(R.id.toolbarTitle);
         toolbarAboutUsButton = findViewById(R.id.toolbarAboutUsImageButton);
+        //movie recycler view click listener
+        movieAdapter = new MovieRecyclerViewAdapter(this, movies, new MovieRecyclerViewAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(int movieId) {
+
+                Intent i = new Intent(MainActivity.this,nextActivity.class);
+                startActivity(i);
+
+                Toast.makeText(MainActivity.this, movieId + "", Toast.LENGTH_SHORT).show();
+            }
+        });
         movieRecyclerView = findViewById(R.id.mainActivityMovieRecyclerView);
         movieRecyclerView.setRecycledViewPool(new RecyclerView.RecycledViewPool());
         movieRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
         movieRecyclerView.setHasFixedSize(false);
-        //movieRecyclerView.setAdapter(new MovieRecyclerViewAdapter(this,movies));
+        movieRecyclerView.setAdapter(movieAdapter);
+        loading = findViewById(R.id.mainActivityProgressBar);
     }
 
     private void getMovies(){
@@ -79,12 +96,14 @@ public class MainActivity extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject movie = jsonArray.getJSONObject(i);
                                 MovieModel n = new MovieModel();
-                                //n.setTitle(movie.getString("title"));
-                                n.setTitle("");
+                                n.setId(movie.getInt("id"));
+                                n.setTitle(movie.getString("title"));
                                 n.setImage(movie.getString("poster_path"));
                                 movies.add(i,n);
                             }
-                            movieRecyclerView.setAdapter(new MovieRecyclerViewAdapter(MainActivity.this,movies));
+                            loading.setVisibility(View.GONE);
+                            movieRecyclerView.setVisibility(View.VISIBLE);
+                            movieAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -99,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
         request.setShouldCache(false);
         queue.getCache().clear();
         queue.getCache().remove(base_url);
+
+        loading.setVisibility(View.VISIBLE);
+        movieRecyclerView.setVisibility(View.GONE);
 
         queue.add(request);
     }

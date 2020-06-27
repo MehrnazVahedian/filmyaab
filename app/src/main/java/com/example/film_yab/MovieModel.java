@@ -2,23 +2,31 @@ package com.example.film_yab;
 
 public class MovieModel {
 
-    private String id;
+    private int id;
     private String title;
     private String Image;
 
-    public String getImage() {
+    public int getId() {
+        return id;
+    }
+
+    String getImage() {
         return Image;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public void setImage(String image) {
+    void setId(int id) {
+        this.id = id;
+    }
+
+    void setImage(String image) {
         Image = image;
     }
 
-    public void setTitle(String title) {
+    void setTitle(String title) {
         this.title = title;
     }
 }
