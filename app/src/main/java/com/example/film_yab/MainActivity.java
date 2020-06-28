@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                                 n.setTitle(movie.getString("title"));
                                 n.setImage(movie.getString("poster_path"));
                                 n.setOverview(movie.getString("overview"));
+                                n.setRelease_date(movie.getString("release_date"));
                                 movies.add(i,n);
                             }
                             loading.setVisibility(View.GONE);

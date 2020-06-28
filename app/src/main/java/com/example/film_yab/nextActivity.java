@@ -3,8 +3,11 @@ package com.example.film_yab;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class nextActivity extends AppCompatActivity {
 
@@ -18,8 +21,12 @@ public class nextActivity extends AppCompatActivity {
         TextView txtName = (TextView) findViewById(R.id.textviewname);
         TextView txtDate = (TextView) findViewById(R.id.textviewtarikh);
         TextView txtOverview = (TextView) findViewById(R.id.textViewreview);
-
+        ImageView image = (ImageView) findViewById(R.id.imageView1) ;
         txtName.setText(movie.getTitle());
         txtOverview.setText(movie.getOverview());
+        txtDate.setText(movie.getRelease_date());
+
+        Picasso.get().load("https://image.tmdb.org/t/p/w500"+movie.getImage()).fit().into(image);
+
     }
 }

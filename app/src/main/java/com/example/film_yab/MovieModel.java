@@ -9,6 +9,7 @@ public class MovieModel implements Serializable {
     private String title;
     private String Image;
     private String overview;
+    private String release_date;
 
     public int getId() {
         return id;
@@ -24,6 +25,8 @@ public class MovieModel implements Serializable {
 
     String getOverview(){return overview; }
 
+    String getRelease_date(){return release_date; }
+
     void setId(int id) {
         this.id = id;
     }
@@ -37,4 +40,6 @@ public class MovieModel implements Serializable {
     }
 
     void setOverview(String overview) { this.overview = overview; }
+
+    void setRelease_date(String release_date){ this.release_date = release_date; }
 }
