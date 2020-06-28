@@ -67,12 +67,13 @@ public class MainActivity extends AppCompatActivity {
         //movie recycler view click listener
         movieAdapter = new MovieRecyclerViewAdapter(this, movies, new MovieRecyclerViewAdapter.ItemClickListener() {
             @Override
-            public void onItemClick(int movieId) {
+            public void onItemClick(MovieModel movie) {
 
                 Intent i = new Intent(MainActivity.this,nextActivity.class);
+                i.putExtra("movie", movie);
                 startActivity(i);
 
-                Toast.makeText(MainActivity.this, movieId + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, movie.getId() + " Main Activity", Toast.LENGTH_SHORT).show();
             }
         });
         movieRecyclerView = findViewById(R.id.mainActivityMovieRecyclerView);
@@ -99,12 +100,14 @@ public class MainActivity extends AppCompatActivity {
                                 n.setId(movie.getInt("id"));
                                 n.setTitle(movie.getString("title"));
                                 n.setImage(movie.getString("poster_path"));
+                                n.setOverview(movie.getString("overview"));
                                 movies.add(i,n);
                             }
                             loading.setVisibility(View.GONE);
                             movieRecyclerView.setVisibility(View.VISIBLE);
                             movieAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
+                            Toast.makeText(MainActivity.this, "Error fetching data" , Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         }
                     }
@@ -112,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+                Toast.makeText(MainActivity.this, "Error Connecting Server" , Toast.LENGTH_SHORT).show();
             }
         });
 

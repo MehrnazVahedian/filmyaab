@@ -8,41 +8,48 @@
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="225dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewreview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="157dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textviewname"
         android:layout_width="155dp"
         android:layout_height="24dp"
+        android:layout_marginTop="17dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="182dp"
-        tools:layout_editor_absoluteY="242dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1" />
 
     <TextView
         android:id="@+id/textviewtarikh"
         android:layout_width="101dp"
         android:layout_height="18dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="184dp"
-        tools:layout_editor_absoluteY="293dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textviewname" />
 
     <TextView
         android:id="@+id/textViewreview"
-        android:layout_width="414dp"
+        android:layout_width="0dp"
         android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="-3dp"
-        tools:layout_editor_absoluteY="348dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textviewtarikh" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,14 @@
 package com.example.film_yab;
 
-public class MovieModel {
+import java.io.Serializable;
+
+public class MovieModel implements Serializable {
+
 
     private int id;
     private String title;
     private String Image;
+    private String overview;
 
     public int getId() {
         return id;
@@ -18,6 +22,8 @@ public class MovieModel {
         return title;
     }
 
+    String getOverview(){return overview; }
+
     void setId(int id) {
         this.id = id;
     }
@@ -29,4 +35,6 @@ public class MovieModel {
     void setTitle(String title) {
         this.title = title;
     }
+
+    void setOverview(String overview) { this.overview = overview; }
 }

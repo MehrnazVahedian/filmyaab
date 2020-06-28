@@ -60,13 +60,13 @@ public class MovieRecyclerViewAdapter extends  RecyclerView.Adapter<MovieRecycle
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View v) {
-                    mClickListener.onItemClick(mData.get(position).getId());
+                    mClickListener.onItemClick(mData.get(position));
                 }
             });
         }
     }
 
     public interface ItemClickListener {
-        void onItemClick(int movieId);
+        void onItemClick(MovieModel model);
     }
 }
