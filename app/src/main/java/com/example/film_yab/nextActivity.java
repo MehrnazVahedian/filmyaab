@@ -24,7 +24,7 @@ public class nextActivity extends AppCompatActivity {
         ImageView image = (ImageView) findViewById(R.id.imageView1) ;
         txtName.setText(movie.getTitle());
         txtOverview.setText(movie.getOverview());
-        txtDate.setText(movie.getRelease_date());
+        txtDate.setText("Release Date: " + movie.getRelease_date());
 
         Picasso.get().load("https://image.tmdb.org/t/p/w500"+movie.getImage()).fit().into(image);
 
